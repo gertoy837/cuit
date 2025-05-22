@@ -1,21 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cuit App</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-gray-100 text-gray-800">
 
   <div class="w-[50%] mx-auto py-10">
+    {{-- HEADER --}}
+    <div class="flex justify-between items-center mb-5">
+      <h1 class="text-xl font-semibold text-shadow-blue-600">
+        Hello, {{Auth::user()->name}}
+      </h1>
+      <form method="POST" action="{{route('logout')}}">
+        @csrf
+        <button type="submit" class="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600">Logout</button>
+      </form>
+    </div>
+
     <!-- Textarea and Button -->
     <div class="bg-white p-6 rounded-xl shadow mb-8">
       <textarea
         class="w-full border border-gray-300 rounded-lg p-4 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
-        rows="4"
-        placeholder="What's on your mind?"
-      ></textarea>
+        rows="4" placeholder="What's on your mind?"></textarea>
       <div class="text-right mt-4">
         <button class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition">
           Cuit
@@ -40,9 +51,7 @@
         <div class="mt-4 hidden">
           <textarea
             class="w-full border border-gray-300 rounded-lg p-3 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
-            rows="2"
-            placeholder="Write a reply..."
-          ></textarea>
+            rows="2" placeholder="Write a reply..."></textarea>
           <div class="text-right mt-2">
             <button class="bg-green-600 text-white px-4 py-1 rounded-full hover:bg-green-700 transition">
               Send
@@ -65,9 +74,7 @@
         <div class="mt-4 hidden">
           <textarea
             class="w-full border border-gray-300 rounded-lg p-3 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
-            rows="2"
-            placeholder="Write a reply..."
-          ></textarea>
+            rows="2" placeholder="Write a reply..."></textarea>
           <div class="text-right mt-2">
             <button class="bg-green-600 text-white px-4 py-1 rounded-full hover:bg-green-700 transition">
               Send
@@ -88,4 +95,5 @@
   </script>
 
 </body>
+
 </html>
